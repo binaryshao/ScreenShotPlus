@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:id="@+id/fl_total"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="36"/>
+
+        <LinearLayout android:id="@+id/ll_save_area"
+                      android:layout_width="match_parent"
+                      android:layout_height="0dp"
+                      android:layout_marginLeft="18dp"
+                      android:layout_marginRight="18dp"
+                      android:layout_weight="876"
+                      android:background="@drawable/android_logo"
+                      android:gravity="center_horizontal"
+                      android:orientation="vertical">
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="180"/>
+
+        <TextView android:id="@+id/tv_save"
+                  android:layout_width="match_parent"
+                  android:layout_height="00dp"
+                  android:layout_marginLeft="10dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_weight="80"
+                  android:background="@drawable/btn_red_selector"
+                  android:gravity="center"
+                  android:text="存储到相册"
+                  android:textColor="@color/white"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="16"/>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fl_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Black"
+        android:visibility="gone">
+
+        <ImageView android:id="@+id/iv_pic_get"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="center"/>
+    </FrameLayout>
+
+</FrameLayout>

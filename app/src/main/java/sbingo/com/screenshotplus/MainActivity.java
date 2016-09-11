@@ -2,6 +2,7 @@ package sbingo.com.screenshotplus;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -180,7 +181,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private class SuccessHandler extends Handler{
         @Override
         public void handleMessage(Message msg) {
-            showSuccess();
+//            showSuccess();
+            showSuccessNew();
         }
     }
     /**
@@ -241,5 +243,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         valueAnimator.start();
     }
 
+    private void showSuccessNew() {
+        ToastUtils.show(MainActivity.this, "保存成功");
+        mPicGet.setImageBitmap(saveBitmap);
+
+        ObjectAnimator paramsAnimator = ObjectAnimator.ofFloat(new Wrapper(mPicGet), "params", 1f, 0.7f);
+        paramsAnimator.setDuration(800);
+        paramsAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                mFL.setVisibility(View.VISIBLE);
+                mPicGet.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPicGet.setVisibility(View.GONE);
+                        mFL.setVisibility(View.GONE);
+                        mSave.setEnabled(true);
+                        mSave.setText("存储到相册");
+                    }
+                }, 1500);
+            }
+        });
+        paramsAnimator.start();
+    }
+
+
+    /**
+     * 包装类
+     */
+    class Wrapper {
+        private View mTarget;
+
+        public Wrapper(View mTarget) {
+            this.mTarget = mTarget;
+        }
+
+        public float getParams() {
+            ViewGroup.LayoutParams lp = mTarget.getLayoutParams();
+            return lp.height / mPicGetHeight;
+        }
+
+        public void setParams(float params) {
+            ViewGroup.LayoutParams lp = mTarget.getLayoutParams();
+            lp.height = (int) (mPicGetHeight * params);
+            lp.width = (int) (mPicGetWidth * params);
+            mTarget.requestLayout();
+        }
+    }
 }
 

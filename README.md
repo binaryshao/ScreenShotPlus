@@ -7,4 +7,4 @@
 ![](https://github.com/Sbingo/ScreenShotPlus/raw/master/SP_20160811.gif)  
 
 ### 公众号
-![as彬哥六六六](https://s2.ax1x.com/2019/03/26/AUooOs.md.jpg)
+![as彬哥六六六](https://s2.ax1x.com/2019/03/26/AapwMq.jpg)
